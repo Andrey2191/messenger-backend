@@ -5,12 +5,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: '.env' }),
     UserModule, 
-    MongooseModule.forRoot(process.env.DB_URL)],
+    MongooseModule.forRoot(process.env.DB_URL), AuthModule],
   controllers: [AppController, UserController],
   providers: [AppService],
 })
